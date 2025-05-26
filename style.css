@@ -1,0 +1,208 @@
+/* css/style.css */
+
+body {
+    font-family: 'Roboto', sans-serif;
+    background-color: #f4f7f6; /* Un gris clair et doux */
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligner en haut */
+    min-height: 100vh; /* S'assurer que le corps prend toute la hauteur */
+    color: #333;
+}
+
+.container {
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 12px; /* Coins plus arrondis */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
+    max-width: 800px; /* Largeur maximale pour une meilleure lisibilité */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+header {
+    text-align: center;
+    margin-bottom: 30px;
+    border-bottom: 2px solid #e0e0e0; /* Ligne de séparation subtile */
+    padding-bottom: 20px;
+}
+
+header h1 {
+    color: #2c3e50; /* Bleu foncé */
+    margin-bottom: 10px;
+    font-weight: 700;
+}
+
+header p {
+    color: #7f8c8d; /* Gris moyen */
+    font-size: 1.1em;
+}
+
+.selection-card {
+    background-color: #ecf0f1; /* Gris très clair pour les cartes */
+    border: 1px solid #dcdcdc; /* Bordure douce */
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Ombre légère */
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    color: #34495e; /* Bleu gris foncé */
+}
+
+.custom-select-wrapper {
+    position: relative;
+    display: inline-block;
+    width: 100%; /* S'assurer que le wrapper prend toute la largeur disponible */
+}
+
+.custom-select {
+    width: 100%;
+    padding: 12px 15px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    background-color: #fff;
+    -webkit-appearance: none; /* Supprime le style par défaut des navigateurs */
+    -moz-appearance: none;
+    appearance: none;
+    font-size: 1em;
+    color: #555;
+    cursor: pointer;
+    box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.custom-select:focus {
+    border-color: #3498db; /* Bleu vif au focus */
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+    outline: none;
+}
+
+/* Flèche personnalisée pour les selects */
+.custom-select-wrapper::after {
+    content: '▼';
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #888;
+    pointer-events: none; /* Empêche la flèche de bloquer les clics */
+}
+
+h2 {
+    color: #2980b9; /* Bleu moyen */
+    margin-top: 0;
+    margin-bottom: 15px;
+    border-bottom: 1px solid #b3d7ee; /* Ligne sous le titre */
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+h3 {
+    color: #3498db; /* Bleu clair */
+    margin-top: 15px;
+    margin-bottom: 10px;
+    font-weight: 500;
+    font-size: 1.1em;
+}
+
+.checkbox-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px; /* Espace entre les checkboxes */
+}
+
+.checkbox-item {
+    display: flex;
+    align-items: flex-start; /* Aligner en haut pour les textes longs */
+}
+
+.checkbox-item input[type="checkbox"] {
+    margin-right: 10px;
+    flex-shrink: 0; /* Empêche la checkbox de rétrécir */
+    width: 20px; /* Taille plus grande pour la checkbox */
+    height: 20px;
+    border: 1px solid #bdc3c7;
+    border-radius: 4px;
+    appearance: none;
+    -webkit-appearance: none;
+    background-color: #fff;
+    cursor: pointer;
+    position: relative;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+.checkbox-item input[type="checkbox"]:checked {
+    background-color: #2ecc71; /* Vert au checked */
+    border-color: #2ecc71;
+}
+
+.checkbox-item input[type="checkbox"]:checked::after {
+    content: '✔';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 14px;
+}
+
+.checkbox-item label {
+    margin-bottom: 0;
+    font-weight: normal;
+    color: #333;
+    cursor: pointer;
+    font-size: 0.95em; /* Texte légèrement plus petit */
+    line-height: 1.4;
+}
+
+.competence-details {
+    background-color: #ecf0f1;
+    border: 1px solid #b3d7ee; /* Bordure plus spécifique pour les détails */
+}
+
+.competence-details h2 span {
+    color: #3498db;
+}
+
+.btn-primary {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: #27ae60; /* Vert pour le bouton */
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 30px;
+}
+
+.btn-primary:hover {
+    background-color: #2ecc71; /* Vert plus clair au survol */
+    transform: translateY(-2px); /* Effet de léger soulèvement */
+}
+
+/* Styles pour les sections des détails de compétence */
+.competence-detail-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #b3d7ee; /* Ligne pointillée pour séparer les sections */
+}
+
+.competence-detail-section:first-of-type {
+    border-top: none; /* Pas de bordure pour la première section */
+    padding-top: 0;
+}

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Générateur de Fiches Pédagogiques</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Créateur de Fiches Pédagogiques</h1>
+            <p>Sélectionnez les éléments pour générer votre fiche.</p>
+        </header>
+
+        <section class="selection-card">
+            <div class="form-group">
+                <label for="phase-select">Sélectionner une Phase :</label>
+                <div class="custom-select-wrapper">
+                    <select id="phase-select" class="custom-select">
+                        <option value="">--Choisir une phase--</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="selection-card" id="activity-group" style="display: none;">
+            <div class="form-group">
+                <label for="activity-select">Sélectionner une Activité :</label>
+                <div class="custom-select-wrapper">
+                    <select id="activity-select" class="custom-select">
+                        <option value="">--Choisir une activité--</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="selection-card" id="task-group" style="display: none;">
+            <div class="form-group">
+                <label for="task-select">Sélectionner une Tâche :</label>
+                <div class="custom-select-wrapper">
+                    <select id="task-select" class="custom-select">
+                        <option value="">--Choisir une tâche--</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="selection-card" id="problematic-group" style="display: none;">
+            <div class="form-group">
+                <label for="problematic-select">Problématique :</label>
+                <div class="custom-select-wrapper">
+                    <select id="problematic-select" class="custom-select">
+                        <option value="">--Choisir une problématique--</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="selection-card" id="expected-result-group" style="display: none;">
+            <h2>Résultat(s) attendu(s) :</h2>
+            <div id="expected-result-checkboxes" class="checkbox-group">
+                </div>
+        </section>
+
+        <section class="selection-card" id="competence-group" style="display: none;">
+            <div class="form-group">
+                <label for="competence-select">Compétence visée :</label>
+                <div class="custom-select-wrapper">
+                    <select id="competence-select" class="custom-select">
+                        <option value="">--Choisir une compétence--</option>
+                    </select>
+                </div>
+            </div>
+        </section>
+
+        <section class="selection-card competence-details" id="competence-details" style="display: none;">
+            <h2>Détails de la Compétence : <span id="competence-name"></span></h2>
+
+            <div class="form-group competence-detail-section" id="etre-capable-group">
+                <h3>Être capable de :</h3>
+                <div class="checkbox-group" id="etre-capable-checkboxes">
+                    </div>
+            </div>
+
+            <div class="form-group competence-detail-section" id="conditions-ressources-group">
+                <h3>Conditions et ressources :</h3>
+                <div class="checkbox-group" id="conditions-ressources-checkboxes">
+                    </div>
+            </div>
+
+            <div class="form-group competence-detail-section" id="criteres-evaluation-group">
+                <h3>Critères d'évaluation :</h3>
+                <div class="checkbox-group" id="criteres-evaluation-checkboxes">
+                    </div>
+            </div>
+        </section>
+
+        <section class="selection-card" id="on-donne-resources" style="display: none;">
+            <h2>Ressources "On donne" :</h2>
+            <div id="resources-checkboxes" class="checkbox-group">
+                </div>
+        </section>
+
+        <button id="generate-pdf-btn" class="btn-primary" style="display: none;">Générer une Fiche PDF</button>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="js/data.js"></script>
+    <script src="js/script.js"></script>
+</body>
+</html>
