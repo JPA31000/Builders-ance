@@ -1,7 +1,7 @@
 /* css/style.css */
 
 body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Poppins', 'Roboto', sans-serif;
     background-color: #f4f7f6; /* Un gris clair et doux */
     margin: 0;
     padding: 20px;
@@ -12,31 +12,34 @@ body {
     color: #333;
 }
 
+
 .container {
-    background-color: #ffffff;
+    background: linear-gradient(to bottom right, #ffffff, #f8f9fa);
     padding: 30px;
     border-radius: 12px; /* Coins plus arrondis */
     box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1); /* Ombre plus prononcée */
-    max-width: 800px; /* Largeur maximale pour une meilleure lisibilité */
+    max-width: 850px; /* Largeur maximale pour une meilleure lisibilité */
     width: 100%;
     box-sizing: border-box;
 }
 
 header {
     text-align: center;
-    margin-bottom: 30px;
-    border-bottom: 2px solid #e0e0e0; /* Ligne de séparation subtile */
-    padding-bottom: 20px;
+    margin: -30px -30px 30px;
+    background: linear-gradient(135deg, #3498db, #2ecc71);
+    padding: 30px;
+    border-radius: 12px 12px 0 0;
+    color: #fff;
 }
 
 header h1 {
-    color: #2c3e50; /* Bleu foncé */
+    color: #fff;
     margin-bottom: 10px;
     font-weight: 700;
 }
 
 header p {
-    color: #7f8c8d; /* Gris moyen */
+    color: #ecf0f1;
     font-size: 1.1em;
 }
 
@@ -47,6 +50,12 @@ header p {
     padding: 20px;
     margin-bottom: 20px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05); /* Ombre légère */
+    transition: box-shadow 0.2s ease, transform 0.2s ease;
+}
+
+.selection-card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    transform: translateY(-2px);
 }
 
 .form-group {
@@ -179,7 +188,7 @@ h3 {
     display: block;
     width: 100%;
     padding: 15px;
-    background-color: #27ae60; /* Vert pour le bouton */
+    background: linear-gradient(135deg, #2ecc71, #27ae60);
     color: white;
     border: none;
     border-radius: 8px;
@@ -191,7 +200,7 @@ h3 {
 }
 
 .btn-primary:hover {
-    background-color: #2ecc71; /* Vert plus clair au survol */
+    background: linear-gradient(135deg, #3ddc84, #2ecc71);
     transform: translateY(-2px); /* Effet de léger soulèvement */
 }
 
