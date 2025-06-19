@@ -33,10 +33,98 @@ document.addEventListener('DOMContentLoaded', () => {
     const onDonneResourcesDiv = document.getElementById('on-donne-resources');
     const generatePdfBtn = document.getElementById('generate-pdf-btn');
 
+    const sections = [
+        introPage,
+        phaseGroup,
+        activityGroup,
+        taskGroup,
+        problematicGroup,
+        expectedResultGroup,
+        competenceGroup,
+        competenceDetailsDiv,
+        onDonneResourcesDiv
+    ];
+
+    const nextButtons = document.querySelectorAll('.next-btn');
+    const prevButtons = document.querySelectorAll('.prev-btn');
+    let currentStep = 0;
+
     // Variables pour stocker les informations de l'introduction
     window.sequenceName = '';
     window.sessionName = '';
     window.sessionDate = '';
+
+    function showStep(index) {
+        sections.forEach((sec, i) => {
+            sec.style.display = i === index ? 'block' : 'none';
+        });
+        generatePdfBtn.style.display = index === sections.length - 1 ? 'block' : 'none';
+
+        const nav = sections[index].querySelector('.navigation');
+        if (nav) {
+            const prev = nav.querySelector('.prev-btn');
+            const next = nav.querySelector('.next-btn');
+            if (prev) prev.style.display = index === 0 ? 'none' : 'block';
+            if (next) next.style.display = index === sections.length - 1 ? 'none' : 'block';
+        }
+    }
+
+    function validateStep(step) {
+        switch (step) {
+            case 0:
+                if (!sequenceInput.value.trim() || !sessionInput.value.trim() || !dateInput.value) {
+                    alert('Veuillez remplir tous les champs.');
+                    return false;
+                }
+                if (phaseSelect.options.length === 1) {
+                    populatePhases();
+                }
+                window.sequenceName = sequenceInput.value.trim();
+                window.sessionName = sessionInput.value.trim();
+                window.sessionDate = dateInput.value;
+                return true;
+            case 1:
+                if (!phaseSelect.value) { alert('Sélectionnez une phase.'); return false; }
+                return true;
+            case 2:
+                if (!activitySelect.value) { alert('Sélectionnez une activité.'); return false; }
+                return true;
+            case 3:
+                if (!taskSelect.value) { alert('Sélectionnez une tâche.'); return false; }
+                return true;
+            case 4:
+                if (!problematicSelect.value) { alert('Sélectionnez une problématique.'); return false; }
+                return true;
+            case 5:
+                if (expectedResultCheckboxesDiv.querySelectorAll('input[name="expectedResult"]:checked').length === 0) {
+                    alert('Sélectionnez au moins un résultat attendu.');
+                    return false;
+                }
+                return true;
+            case 6:
+                if (!competenceSelect.value) { alert('Sélectionnez une compétence.'); return false; }
+                return true;
+            default:
+                return true;
+        }
+    }
+
+    function nextStep() {
+        if (validateStep(currentStep)) {
+            currentStep = Math.min(currentStep + 1, sections.length - 1);
+            showStep(currentStep);
+        }
+    }
+
+    function prevStep() {
+        currentStep = Math.max(currentStep - 1, 0);
+        showStep(currentStep);
+    }
+
+    nextButtons.forEach(btn => btn.addEventListener('click', nextStep));
+    prevButtons.forEach(btn => btn.addEventListener('click', prevStep));
+
+    showStep(currentStep);
 
     // Fonction pour réinitialiser les sélections suivantes et masquer les groupes
     function resetAndHide(startingLevel) {
@@ -89,17 +177,7 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Lancer le formulaire après l'introduction
-    startBtn.addEventListener('click', () => {
-        window.sequenceName = sequenceInput.value.trim();
-        window.sessionName = sessionInput.value.trim();
-        window.sessionDate = dateInput.value;
-
-        introPage.style.display = 'none';
-        phaseGroup.style.display = 'block';
-
-        populatePhases();
-    });
+    // Ancien bouton de démarrage utilisé comme premier "Suivant"
 
     phaseSelect.addEventListener('change', () => {
         resetAndHide(1);
@@ -280,9 +358,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             populateOnDonneResources(); // Appeler cette fonction pour afficher les ressources "On donne"
         } else {
-            // Si aucune compétence n'est sélectionnée, assurez-vous que les ressources "On donne" sont masquées
-            onDonneResourcesDiv.style.display = 'none';
-            generatePdfBtn.style.display = 'none';
+            resourcesCheckboxesDiv.innerHTML = '';
         }
     });
 
@@ -293,8 +369,6 @@ document.addEventListener('DOMContentLoaded', () => {
             const checkboxItem = createCheckboxItem(`resource-${index}`, 'onDonneResource', resource, resource, false);
             resourcesCheckboxesDiv.appendChild(checkboxItem);
         });
-        onDonneResourcesDiv.style.display = 'block';
-        generatePdfBtn.style.display = 'block';
     }
 
     // Génération du PDF
