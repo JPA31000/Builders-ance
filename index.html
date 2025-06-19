@@ -14,7 +14,23 @@
             <p>Sélectionnez les éléments pour générer votre fiche.</p>
         </header>
 
-        <section class="selection-card">
+        <section id="intro-page" class="selection-card">
+            <div class="form-group">
+                <label for="sequence-name">Nom de la séquence :</label>
+                <input type="text" id="sequence-name" class="custom-select">
+            </div>
+            <div class="form-group">
+                <label for="session-name">Nom de la séance :</label>
+                <input type="text" id="session-name" class="custom-select">
+            </div>
+            <div class="form-group">
+                <label for="session-date">Date :</label>
+                <input type="date" id="session-date" class="custom-select">
+            </div>
+            <button id="start-btn" class="btn-primary">Continuer</button>
+        </section>
+
+        <section id="phase-group" class="selection-card" style="display: none;">
             <div class="form-group">
                 <label for="phase-select">Sélectionner une Phase :</label>
                 <div class="custom-select-wrapper">

@@ -204,6 +204,11 @@ h3 {
     transform: translateY(-2px); /* Effet de léger soulèvement */
 }
 
+/* Section initiale */
+#intro-page {
+    text-align: left;
+}
+
 /* Styles pour les sections des détails de compétence */
 .competence-detail-section {
     margin-top: 20px;

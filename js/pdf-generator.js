@@ -15,8 +15,23 @@ document.addEventListener('DOMContentLoaded', () => {
         const selectedExpectedResult = document.getElementById('expected-result-select').value;
         const selectedCompetence = document.getElementById('competence-select').value;
 
-        // Add selected items to PDF
+        // Add introductory information
         let yPos = 20;
+        doc.setFontSize(14);
+        if (window.sequenceName) {
+            doc.text(`Séquence : ${window.sequenceName}`, 10, yPos);
+            yPos += 7;
+        }
+        if (window.sessionName) {
+            doc.text(`Séance : ${window.sessionName}`, 10, yPos);
+            yPos += 7;
+        }
+        if (window.sessionDate) {
+            doc.text(`Date : ${window.sessionDate}`, 10, yPos);
+            yPos += 7;
+        }
+
+        // Add selected items to PDF
         doc.setFontSize(16);
         doc.text("Détails du Formulaire", 10, yPos);
         yPos += 10;

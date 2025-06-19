@@ -1,6 +1,13 @@
 // js/script.js
 
 document.addEventListener('DOMContentLoaded', () => {
+    const introPage = document.getElementById('intro-page');
+    const startBtn = document.getElementById('start-btn');
+    const sequenceInput = document.getElementById('sequence-name');
+    const sessionInput = document.getElementById('session-name');
+    const dateInput = document.getElementById('session-date');
+
+    const phaseGroup = document.getElementById('phase-group');
     const phaseSelect = document.getElementById('phase-select');
     const activitySelect = document.getElementById('activity-select');
     const taskSelect = document.getElementById('task-select');
@@ -25,6 +32,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const onDonneResourcesDiv = document.getElementById('on-donne-resources');
     const generatePdfBtn = document.getElementById('generate-pdf-btn');
+
+    // Variables pour stocker les informations de l'introduction
+    window.sequenceName = '';
+    window.sessionName = '';
+    window.sessionDate = '';
 
     // Fonction pour réinitialiser les sélections suivantes et masquer les groupes
     function resetAndHide(startingLevel) {
@@ -76,6 +88,18 @@ document.addEventListener('DOMContentLoaded', () => {
             phaseSelect.appendChild(option);
         });
     }
+
+    // Lancer le formulaire après l'introduction
+    startBtn.addEventListener('click', () => {
+        window.sequenceName = sequenceInput.value.trim();
+        window.sessionName = sessionInput.value.trim();
+        window.sessionDate = dateInput.value;
+
+        introPage.style.display = 'none';
+        phaseGroup.style.display = 'block';
+
+        populatePhases();
+    });
 
     phaseSelect.addEventListener('change', () => {
         resetAndHide(1);
@@ -402,6 +426,5 @@ document.addEventListener('DOMContentLoaded', () => {
         doc.save('fiche_pedagogique.pdf');
     });
 
-    // Appel initial pour peupler le premier sélecteur
-    populatePhases();
+    // Les phases seront peuplées après la saisie des informations initiales
 });
