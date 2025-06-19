@@ -37,6 +37,7 @@ Les données sont structurées hiérarchiquement dans `js/data.js` pour facilite
     cd Formulaire
     ```
 2.  **Ouvrir `index.html`:** Ouvrez simplement le fichier `index.html` dans votre navigateur web.
+3.  **Saisir les informations initiales :** Entrez le nom de la séquence, le nom de la séance et la date puis cliquez sur **Continuer** pour accéder au formulaire.
 
 ## Guide d'Utilisation (docs/guide-utilisation.md)
 
