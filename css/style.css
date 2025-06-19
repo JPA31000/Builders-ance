@@ -204,6 +204,32 @@ h3 {
     transform: translateY(-2px); /* Effet de léger soulèvement */
 }
 
+.btn-secondary {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #bdc3c7, #95a5a6);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    margin-top: 30px;
+}
+
+.btn-secondary:hover {
+    background: linear-gradient(135deg, #d0d3d4, #bdc3c7);
+    transform: translateY(-2px);
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
 /* Section initiale */
 #intro-page {
     text-align: left;
