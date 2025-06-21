@@ -63,8 +63,9 @@ document.addEventListener('DOMContentLoaded', () => {
     window.sessionDate = '';
 
     function showStep(index) {
+        // Afficher la section courante et conserver les précédentes visibles
         sections.forEach((sec, i) => {
-            sec.style.display = i === index ? 'block' : 'none';
+            sec.style.display = i <= index ? 'block' : 'none';
         });
         generatePdfBtn.style.display = index === sections.length - 1 ? 'block' : 'none';
     }
