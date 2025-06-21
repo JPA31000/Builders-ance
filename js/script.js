@@ -45,9 +45,17 @@ document.addEventListener('DOMContentLoaded', () => {
         onDonneResourcesDiv
     ];
 
-    const nextButtons = document.querySelectorAll('.next-btn');
-    const prevButtons = document.querySelectorAll('.prev-btn');
     let currentStep = 0;
+
+    function checkIntroAndAdvance() {
+        if (currentStep === 0 && sequenceInput.value.trim() && sessionInput.value.trim() && dateInput.value) {
+            nextStep();
+        }
+    }
+
+    sequenceInput.addEventListener('change', checkIntroAndAdvance);
+    sessionInput.addEventListener('change', checkIntroAndAdvance);
+    dateInput.addEventListener('change', checkIntroAndAdvance);
 
     // Variables pour stocker les informations de l'introduction
     window.sequenceName = '';
@@ -59,14 +67,6 @@ document.addEventListener('DOMContentLoaded', () => {
             sec.style.display = i === index ? 'block' : 'none';
         });
         generatePdfBtn.style.display = index === sections.length - 1 ? 'block' : 'none';
-
-        const nav = sections[index].querySelector('.navigation');
-        if (nav) {
-            const prev = nav.querySelector('.prev-btn');
-            const next = nav.querySelector('.next-btn');
-            if (prev) prev.style.display = index === 0 ? 'none' : 'block';
-            if (next) next.style.display = index === sections.length - 1 ? 'none' : 'block';
-        }
     }
 
     function validateStep(step) {
@@ -120,9 +120,6 @@ document.addEventListener('DOMContentLoaded', () => {
         currentStep = Math.max(currentStep - 1, 0);
         showStep(currentStep);
     }
-
-    nextButtons.forEach(btn => btn.addEventListener('click', nextStep));
-    prevButtons.forEach(btn => btn.addEventListener('click', prevStep));
 
     showStep(currentStep);
 
@@ -194,6 +191,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 activityGroup.style.display = 'block';
             }
         }
+        if (currentStep === 1) nextStep();
     });
 
     activitySelect.addEventListener('change', () => {
@@ -219,6 +217,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             populateProblematic(selectedActivityName);
         }
+        if (currentStep === 2) nextStep();
     });
 
     function populateProblematic(activityName) {
@@ -236,6 +235,10 @@ document.addEventListener('DOMContentLoaded', () => {
             problematicGroup.style.display = 'none';
         }
     }
+
+    problematicSelect.addEventListener('change', () => {
+        if (currentStep === 4) nextStep();
+    });
 
     taskSelect.addEventListener('change', () => {
         resetAndHide(4);
@@ -258,6 +261,7 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             populateCompetences(selectedTask);
         }
+        if (currentStep === 3) nextStep();
     });
 
     function populateCompetences(taskName) {
@@ -275,6 +279,10 @@ document.addEventListener('DOMContentLoaded', () => {
             competenceGroup.style.display = 'none';
         }
     }
+
+    expectedResultCheckboxesDiv.addEventListener('change', () => {
+        if (currentStep === 5 && validateStep(5)) nextStep();
+    });
 
     // Fonction utilitaire pour créer une checkbox
     // MODIFICATION ICI: isChecked est false par défaut
@@ -360,6 +368,7 @@ document.addEventListener('DOMContentLoaded', () => {
         } else {
             resourcesCheckboxesDiv.innerHTML = '';
         }
+        if (currentStep === 6) nextStep();
     });
 
     function populateOnDonneResources() {
@@ -370,6 +379,10 @@ document.addEventListener('DOMContentLoaded', () => {
             resourcesCheckboxesDiv.appendChild(checkboxItem);
         });
     }
+
+    competenceDetailsDiv.addEventListener('change', () => {
+        if (currentStep === 7) nextStep();
+    });
 
     // Génération du PDF
     generatePdfBtn.addEventListener('click', () => {
