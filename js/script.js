@@ -5,7 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     const startBtn = document.getElementById('start-btn');
     const sequenceInput = document.getElementById('sequence-name');
     const sessionInput = document.getElementById('session-name');
-    const dateInput = document.getElementById('session-date');
+    const periodSelect = document.getElementById('session-period');
 
     const phaseGroup = document.getElementById('phase-group');
     const phaseSelect = document.getElementById('phase-select');
@@ -48,19 +48,19 @@ document.addEventListener('DOMContentLoaded', () => {
     let currentStep = 0;
 
     function checkIntroAndAdvance() {
-        if (currentStep === 0 && sequenceInput.value.trim() && sessionInput.value.trim() && dateInput.value) {
+        if (currentStep === 0 && sequenceInput.value.trim() && sessionInput.value.trim() && periodSelect.value) {
             nextStep();
         }
     }
 
     sequenceInput.addEventListener('change', checkIntroAndAdvance);
     sessionInput.addEventListener('change', checkIntroAndAdvance);
-    dateInput.addEventListener('change', checkIntroAndAdvance);
+    periodSelect.addEventListener('change', checkIntroAndAdvance);
 
     // Variables pour stocker les informations de l'introduction
     window.sequenceName = '';
     window.sessionName = '';
-    window.sessionDate = '';
+    window.sessionPeriod = '';
 
     function showStep(index) {
         // Afficher la section courante et conserver les précédentes visibles
@@ -73,7 +73,7 @@ document.addEventListener('DOMContentLoaded', () => {
     function validateStep(step) {
         switch (step) {
             case 0:
-                if (!sequenceInput.value.trim() || !sessionInput.value.trim() || !dateInput.value) {
+                if (!sequenceInput.value.trim() || !sessionInput.value.trim() || !periodSelect.value) {
                     alert('Veuillez remplir tous les champs.');
                     return false;
                 }
@@ -82,7 +82,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 }
                 window.sequenceName = sequenceInput.value.trim();
                 window.sessionName = sessionInput.value.trim();
-                window.sessionDate = dateInput.value;
+                window.sessionPeriod = periodSelect.value;
                 return true;
             case 1:
                 if (!phaseSelect.value) { alert('Sélectionnez une phase.'); return false; }

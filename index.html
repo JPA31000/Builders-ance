@@ -24,8 +24,18 @@
                 <input type="text" id="session-name" class="custom-select">
             </div>
             <div class="form-group">
-                <label for="session-date">Date :</label>
-                <input type="date" id="session-date" class="custom-select">
+                <label for="session-period">Période :</label>
+                <div class="custom-select-wrapper">
+                    <select id="session-period" class="custom-select">
+                        <option value="">--Choisir une période--</option>
+                        <option value="debut_annee">Début d'année</option>
+                        <option value="milieu_1er_semestre">Milieu 1er semestre</option>
+                        <option value="fin_1er_semestre">Fin 1er semestre</option>
+                        <option value="debut_2e_semestre">Début 2d semestre</option>
+                        <option value="milieu_2e_semestre">Milieu 2d semestre</option>
+                        <option value="fin_annee">Fin d'année</option>
+                    </select>
+                </div>
             </div>
         </section>
 
